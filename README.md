@@ -23,27 +23,14 @@ sing-box 提供稳定版和最新预发布版两个 Formula。预发布版自动
 
 ```bash
 brew install <github-user>/<tap-name>/sing-box
-brew install <github-user>/<tap-name>/sing-box@latest
+brew install <github-user>/<tap-name>/sing-box-latest
 ```
 
-`sing-box@latest` 是 keg-only 的 versioned Formula，可以与稳定版同时安装。临时调用预发布版：
+两个 Formula 都安装 `sing-box` 可执行文件，因此不能同时链接。切换到预发布版前，先卸载稳定版：
 
 ```bash
-$(brew --prefix <github-user>/<tap-name>/sing-box@latest)/bin/sing-box version
-```
-
-如需将预发布版设为当前命令行版本：
-
-```bash
-brew unlink sing-box
-brew link --force <github-user>/<tap-name>/sing-box@latest
-```
-
-切回稳定版：
-
-```bash
-brew unlink <github-user>/<tap-name>/sing-box@latest
-brew link sing-box
+brew uninstall sing-box
+brew install <github-user>/<tap-name>/sing-box-latest
 ```
 
 两个发布通道由 `.github/workflows/update-sing-box.yml` 每天自动检查。发现新版本时，工作流会验证对应的 macOS/Linux、ARM64/AMD64 Release 资源及 SHA-256，然后更新 Formula 并提交。

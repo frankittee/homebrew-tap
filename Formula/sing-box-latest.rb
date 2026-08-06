@@ -1,10 +1,8 @@
-class SingBoxATLatest < Formula
+class SingBoxLatest < Formula
   desc "Universal proxy platform (latest prerelease)"
   homepage "https://sing-box.sagernet.org"
   version "1.14.0-beta.8"
   license "GPL-3.0-or-later"
-
-  keg_only :versioned_formula
 
   on_macos do
     if Hardware::CPU.arm?
@@ -25,6 +23,8 @@ class SingBoxATLatest < Formula
       sha256 "92c4139375a7bfefe67c2bf62a0e3757035929fa592dbd24af50cce15a9feb7c"
     end
   end
+
+  conflicts_with "sing-box", because: "both install the sing-box executable"
 
   def install
     bin.install "sing-box"

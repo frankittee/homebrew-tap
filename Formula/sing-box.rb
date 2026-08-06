@@ -24,6 +24,8 @@ class SingBox < Formula
     end
   end
 
+  conflicts_with "sing-box-latest", because: "both install the sing-box executable"
+
   def install
     bin.install "sing-box"
   end

@@ -8,7 +8,7 @@ from pathlib import Path
 
 CHANNELS = {
     "stable": Path("Formula/sing-box.rb"),
-    "latest": Path("Formula/sing-box@latest.rb"),
+    "latest": Path("Formula/sing-box-latest.rb"),
 }
 
 PLATFORMS = (
