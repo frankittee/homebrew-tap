@@ -34,7 +34,6 @@ class SingBox < Formula
     run [opt_bin/"sing-box", "run", "--config", etc/"sing-box/config.json",
          "--directory", var/"lib/sing-box"]
     keep_alive true
-    process_type :immediate
   end
 
   test do
