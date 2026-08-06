@@ -1,0 +1,41 @@
+name: Update sing-box
+
+on:
+  schedule:
+    - cron: "23 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-sing-box
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Fetch releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --paginate --slurp "repos/SagerNet/sing-box/releases?per_page=100" > releases.json
+
+      - name: Update Formulae
+        run: python3 scripts/update-sing-box.py releases.json
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "All sing-box channels are current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Formula/sing-box.rb Formula/sing-box@beta.rb Formula/sing-box@alpha.rb
+          git commit -m "Update sing-box release channels"
+          git push

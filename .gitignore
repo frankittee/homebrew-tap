@@ -1,0 +1,4 @@
+.DS_Store
+*.bottle.*
+__pycache__/
+*.pyc

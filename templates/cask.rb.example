@@ -1,0 +1,12 @@
+cask "example" do
+  version "1.0.0"
+  sha256 "REPLACE_WITH_SHA256"
+
+  url "https://github.com/OWNER/PROJECT/releases/download/v#{version}/Example.dmg"
+  name "Example"
+  desc "Short description of the macOS application"
+  homepage "https://github.com/OWNER/PROJECT"
+
+  app "Example.app"
+end
+
