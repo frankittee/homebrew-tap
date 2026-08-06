@@ -17,23 +17,21 @@ brew install <github-user>/<tap-name>/<formula>
 brew install --cask <github-user>/<tap-name>/<cask>
 ```
 
-### sing-box 发布通道
+### sing-box
 
-sing-box 提供稳定版和最新预发布版两个 Formula。预发布版自动跟踪上游最新的 Alpha、Beta 或 RC：
-
-```bash
-brew install <github-user>/<tap-name>/sing-box
-brew install <github-user>/<tap-name>/sing-box-latest
-```
-
-两个 Formula 都安装 `sing-box` 可执行文件，因此不能同时链接。切换到预发布版前，先卸载稳定版：
+本 tap 中的 sing-box 自动跟踪上游最新预发布版，包括 Alpha、Beta 或 RC：
 
 ```bash
-brew uninstall sing-box
-brew install <github-user>/<tap-name>/sing-box-latest
+brew install frankittee/tap/sing-box
 ```
 
-两个发布通道由 `.github/workflows/update-sing-box.yml` 每天自动检查。发现新版本时，工作流会验证对应的 macOS/Linux、ARM64/AMD64 Release 资源及 SHA-256，然后更新 Formula 并提交。
+如需安装稳定版，请直接使用 Homebrew Core：
+
+```bash
+brew install sing-box
+```
+
+预发布版由 `.github/workflows/update-sing-box.yml` 每天自动检查。发现新版本时，工作流会验证对应的 macOS/Linux、ARM64/AMD64 Release 资源及 SHA-256，然后更新 Formula 并提交。
 
 ## 仓库结构
 

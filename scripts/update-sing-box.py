@@ -6,10 +6,7 @@ import sys
 from pathlib import Path
 
 
-CHANNELS = {
-    "stable": Path("Formula/sing-box.rb"),
-    "latest": Path("Formula/sing-box-latest.rb"),
-}
+FORMULA = Path("Formula/sing-box.rb")
 
 PLATFORMS = (
     "darwin-arm64",
@@ -19,16 +16,11 @@ PLATFORMS = (
 )
 
 
-def select_release(releases: list[dict], channel: str) -> dict:
+def select_prerelease(releases: list[dict]) -> dict:
     for release in releases:
-        tag = release["tag_name"]
-        if release["draft"]:
-            continue
-        if channel == "stable" and not release["prerelease"]:
+        if not release["draft"] and release["prerelease"]:
             return release
-        if channel == "latest" and release["prerelease"]:
-            return release
-    raise RuntimeError(f"No {channel} release found")
+    raise RuntimeError("No prerelease found")
 
 
 def release_assets(release: dict, version: str) -> dict[str, tuple[str, str]]:
@@ -89,13 +81,12 @@ def main() -> None:
         for release in (page if isinstance(page, list) else [page])
     ]
 
-    for channel, path in CHANNELS.items():
-        release = select_release(releases, channel)
-        version = release["tag_name"].removeprefix("v")
-        assets = release_assets(release, version)
-        changed = update_formula(path, version, assets)
-        status = "updated" if changed else "current"
-        print(f"{channel}: {version} ({status})")
+    release = select_prerelease(releases)
+    version = release["tag_name"].removeprefix("v")
+    assets = release_assets(release, version)
+    changed = update_formula(FORMULA, version, assets)
+    status = "updated" if changed else "current"
+    print(f"prerelease: {version} ({status})")
 
 
 if __name__ == "__main__":

@@ -30,12 +30,12 @@ jobs:
       - name: Commit changes
         run: |
           if git diff --quiet; then
-            echo "All sing-box channels are current."
+            echo "sing-box prerelease is current."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Formula/sing-box.rb Formula/sing-box-latest.rb
-          git commit -m "Update sing-box release channels"
+          git add Formula/sing-box.rb
+          git commit -m "Update sing-box prerelease"
           git push

@@ -1,30 +1,28 @@
 class SingBox < Formula
-  desc "Universal proxy platform"
+  desc "Universal proxy platform (latest prerelease)"
   homepage "https://sing-box.sagernet.org"
-  version "1.13.16"
+  version "1.14.0-beta.8"
   license "GPL-3.0-or-later"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.13.16/sing-box-1.13.16-darwin-arm64.tar.gz"
-      sha256 "32fa21fd75ad62d86a2dcb7e0be77359c35e12798cdbb6a0e30654ef487d90d6"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.14.0-beta.8/sing-box-1.14.0-beta.8-darwin-arm64.tar.gz"
+      sha256 "4a3cdb13dfe9cbf9c76576302dfbdecc42126615c5b5b3335c3843322e90d0d4"
     else
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.13.16/sing-box-1.13.16-darwin-amd64.tar.gz"
-      sha256 "2bfad58d034e280c773e194be03649555e5a7040c48b559dd0898ad293fe793d"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.14.0-beta.8/sing-box-1.14.0-beta.8-darwin-amd64.tar.gz"
+      sha256 "618cd8d7d91b5c419192caaf5ebdcd07868f759c291e13d8cbe3dda87da36a8b"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.13.16/sing-box-1.13.16-linux-arm64.tar.gz"
-      sha256 "d587fb00bdc3c044227f35d15d154f271bc75108475091eda2542e4b82bb2949"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.14.0-beta.8/sing-box-1.14.0-beta.8-linux-arm64.tar.gz"
+      sha256 "16dac6cd72693fae3e2becd2c459fddd9ba06f0d0f8a70e57c4dbc8837361a49"
     else
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.13.16/sing-box-1.13.16-linux-amd64.tar.gz"
-      sha256 "e37c312859dfa84cba148f41072ff6369f08361ae91d622dc1fd3aab49611a8d"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.14.0-beta.8/sing-box-1.14.0-beta.8-linux-amd64.tar.gz"
+      sha256 "92c4139375a7bfefe67c2bf62a0e3757035929fa592dbd24af50cce15a9feb7c"
     end
   end
-
-  conflicts_with "sing-box-latest", because: "both install the sing-box executable"
 
   def install
     bin.install "sing-box"
