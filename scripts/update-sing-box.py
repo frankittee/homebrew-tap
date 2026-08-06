@@ -8,8 +8,7 @@ from pathlib import Path
 
 CHANNELS = {
     "stable": Path("Formula/sing-box.rb"),
-    "beta": Path("Formula/sing-box@beta.rb"),
-    "alpha": Path("Formula/sing-box@alpha.rb"),
+    "latest": Path("Formula/sing-box@latest.rb"),
 }
 
 PLATFORMS = (
@@ -27,7 +26,7 @@ def select_release(releases: list[dict], channel: str) -> dict:
             continue
         if channel == "stable" and not release["prerelease"]:
             return release
-        if channel != "stable" and release["prerelease"] and f"-{channel}." in tag:
+        if channel == "latest" and release["prerelease"]:
             return release
     raise RuntimeError(f"No {channel} release found")
 
@@ -101,4 +100,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

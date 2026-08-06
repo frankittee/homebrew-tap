@@ -1,5 +1,5 @@
-class SingBoxATBeta < Formula
-  desc "Universal proxy platform (beta channel)"
+class SingBoxATLatest < Formula
+  desc "Universal proxy platform (latest prerelease)"
   homepage "https://sing-box.sagernet.org"
   version "1.14.0-beta.8"
   license "GPL-3.0-or-later"

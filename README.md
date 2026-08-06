@@ -19,35 +19,34 @@ brew install --cask <github-user>/<tap-name>/<cask>
 
 ### sing-box 发布通道
 
-sing-box 提供稳定版、Beta 和 Alpha 三个独立 Formula：
+sing-box 提供稳定版和最新预发布版两个 Formula。预发布版自动跟踪上游最新的 Alpha、Beta 或 RC：
 
 ```bash
 brew install <github-user>/<tap-name>/sing-box
-brew install <github-user>/<tap-name>/sing-box@beta
-brew install <github-user>/<tap-name>/sing-box@alpha
+brew install <github-user>/<tap-name>/sing-box@latest
 ```
 
-Beta 和 Alpha 是 keg-only 的 versioned Formula，可以与稳定版同时安装。临时调用指定通道：
+`sing-box@latest` 是 keg-only 的 versioned Formula，可以与稳定版同时安装。临时调用预发布版：
 
 ```bash
-$(brew --prefix <github-user>/<tap-name>/sing-box@beta)/bin/sing-box version
+$(brew --prefix <github-user>/<tap-name>/sing-box@latest)/bin/sing-box version
 ```
 
-如需将 Beta 设为当前命令行版本：
+如需将预发布版设为当前命令行版本：
 
 ```bash
 brew unlink sing-box
-brew link --force <github-user>/<tap-name>/sing-box@beta
+brew link --force <github-user>/<tap-name>/sing-box@latest
 ```
 
 切回稳定版：
 
 ```bash
-brew unlink <github-user>/<tap-name>/sing-box@beta
+brew unlink <github-user>/<tap-name>/sing-box@latest
 brew link sing-box
 ```
 
-三个发布通道由 `.github/workflows/update-sing-box.yml` 每天自动检查。发现新版本时，工作流会验证对应的 macOS/Linux、ARM64/AMD64 Release 资源及 SHA-256，然后更新 Formula 并提交。
+两个发布通道由 `.github/workflows/update-sing-box.yml` 每天自动检查。发现新版本时，工作流会验证对应的 macOS/Linux、ARM64/AMD64 Release 资源及 SHA-256，然后更新 Formula 并提交。
 
 ## 仓库结构
 

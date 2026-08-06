@@ -36,6 +36,6 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Formula/sing-box.rb Formula/sing-box@beta.rb Formula/sing-box@alpha.rb
+          git add Formula/sing-box.rb Formula/sing-box@latest.rb
           git commit -m "Update sing-box release channels"
           git push
