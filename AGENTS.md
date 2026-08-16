@@ -6,3 +6,4 @@
 - Every Formula should include a meaningful `test do` block.
 - Verify download checksums and licenses before publishing.
 - Run Homebrew audit, installation, and test commands before submitting changes.
+- Use `mise x -- gh` to access this repository's actions and submit pull requests.

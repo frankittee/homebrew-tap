@@ -2,3 +2,4 @@
 *.bottle.*
 __pycache__/
 *.pyc
+*local*
