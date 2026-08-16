@@ -1,15 +1,15 @@
-name: Update sing-box
+name: Update g
 
 on:
   schedule:
-    - cron: "23 2 * * *"
+    - cron: "47 2 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: update-sing-box
+  group: update-g
   cancel-in-progress: true
 
 jobs:
@@ -19,13 +19,13 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
-      - name: Fetch releases
+      - name: Fetch latest release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           for attempt in {1..5}; do
-            if gh api --paginate --slurp "repos/SagerNet/sing-box/releases?per_page=100" > releases.json.tmp; then
-              mv releases.json.tmp releases.json
+            if gh api "repos/frankittee/Git-Config-Manager/releases/latest" > release.json.tmp; then
+              mv release.json.tmp release.json
               exit 0
             fi
 
@@ -34,18 +34,18 @@ jobs:
 
           exit 1
 
-      - name: Update Formulae
-        run: python3 scripts/update-sing-box.py releases.json
+      - name: Update Formula
+        run: python3 scripts/update-g.py release.json
 
       - name: Commit changes
         run: |
           if git diff --quiet; then
-            echo "sing-box prerelease is current."
+            echo "g is current."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Formula/sing-box.rb
-          git commit -m "Update sing-box prerelease"
+          git add Formula/git-config-manager.rb
+          git commit -m "Update g to latest release"
           git push
