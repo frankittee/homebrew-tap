@@ -1,26 +1,26 @@
 class SingBox < Formula
   desc "Universal proxy platform (latest prerelease)"
   homepage "https://sing-box.sagernet.org"
-  version "1.15.0-alpha.7"
+  version "1.15.0-alpha.8"
   license "GPL-3.0-or-later"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.7/sing-box-1.15.0-alpha.7-darwin-arm64.tar.gz"
-      sha256 "1866d7138868c2646ea8b3ff6c149002dabb1195ad8fa55264c43786fde8a907"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.8/sing-box-1.15.0-alpha.8-darwin-arm64.tar.gz"
+      sha256 "e3fb5d7e8586b92e3eab06fca80a09239ec0c9e7c8a04f6f16e483a034c78581"
     else
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.7/sing-box-1.15.0-alpha.7-darwin-amd64.tar.gz"
-      sha256 "854301fbf0612478ee56a044e8ec424af4558b9a5526fe21be85c2955249f275"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.8/sing-box-1.15.0-alpha.8-darwin-amd64.tar.gz"
+      sha256 "8ce7fc2151f52ef8eb2ef7b65f8e997f10f5b609a07ea0c8d25a3913dc28fb80"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.7/sing-box-1.15.0-alpha.7-linux-arm64.tar.gz"
-      sha256 "0db6197d12002d41b7b68bb6085a9b0b506174df12f31ba697eee54e44da2be4"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.8/sing-box-1.15.0-alpha.8-linux-arm64.tar.gz"
+      sha256 "243ab1bb119c084accdfb7c92d72e2aef8a401ac1669f113e5e17622e7163a2b"
     else
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.7/sing-box-1.15.0-alpha.7-linux-amd64.tar.gz"
-      sha256 "0878b243c590a5df15f0de0638756e43f56a5aadb4184652631d2806c8af0273"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.8/sing-box-1.15.0-alpha.8-linux-amd64.tar.gz"
+      sha256 "67f314bd6c465cca5d86e46c7eb70a94876b210e16aeb47215bac91dd8e3a0d5"
     end
   end
 
