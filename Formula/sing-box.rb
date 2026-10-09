@@ -1,26 +1,26 @@
 class SingBox < Formula
   desc "Universal proxy platform (latest prerelease)"
   homepage "https://sing-box.sagernet.org"
-  version "1.15.0-alpha.10"
+  version "1.15.0-alpha.11"
   license "GPL-3.0-or-later"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.10/sing-box-1.15.0-alpha.10-darwin-arm64.tar.gz"
-      sha256 "70929fd791bdebe068272a94525e138fdff9d3521003fa2f328838f57184f760"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.11/sing-box-1.15.0-alpha.11-darwin-arm64.tar.gz"
+      sha256 "f29518dff61f9a6104d0a1e99a554e3630d120fd5e76f15be6e31f3b9613449d"
     else
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.10/sing-box-1.15.0-alpha.10-darwin-amd64.tar.gz"
-      sha256 "6f54565150a2d4370303c5816e3135b70f8de7fad8a1da84c889b7e3f324882c"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.11/sing-box-1.15.0-alpha.11-darwin-amd64.tar.gz"
+      sha256 "c6e8df12edd36d42ca72c20135eeab78b760fac61b45697590396624c8c23f26"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.10/sing-box-1.15.0-alpha.10-linux-arm64.tar.gz"
-      sha256 "9d80be1048141f403a19362d54303223295719e5127054a7e72d6c953c09b220"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.11/sing-box-1.15.0-alpha.11-linux-arm64.tar.gz"
+      sha256 "009de46765334ebedb27d995ccf2a32335d4596906bd33139f10de6afeaae43f"
     else
-      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.10/sing-box-1.15.0-alpha.10-linux-amd64.tar.gz"
-      sha256 "c17da275b97ad1ed11a1d1b428d371587b6d014fd7cbb8b00d963a5a2b4cd86d"
+      url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.11/sing-box-1.15.0-alpha.11-linux-amd64.tar.gz"
+      sha256 "00ecddab834733212260164772b6349af24827a8d103b3152ca55607c37c9fd8"
     end
   end
 
