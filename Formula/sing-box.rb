@@ -24,13 +24,45 @@ class SingBox < Formula
     end
   end
 
+  on_macos do
+    resource "sing-box-service" do
+      url "https://raw.githubusercontent.com/frankittee/homebrew-tap/main/scripts/sing-box-service.sh",
+          using: :nounzip
+      version "1"
+      sha256 "1431a3ad455763423a833074fe735f6f497b44237f79aa81fecbe32572fd6d88"
+    end
+  end
+
   def install
     bin.install "sing-box"
+
+    return unless OS.mac?
+
+    resource("sing-box-service").stage do
+      libexec.install "sing-box-service.sh" => "sing-box-service"
+    end
+  end
+
+  def caveats
+    on_macos do
+      <<~EOS
+        With TUN DNS enabled, the service sets DNS on all network services to
+        the configured or derived TUN DNS addresses after they respond.
+        Stopping the TUN service clears manual DNS settings on all network services.
+      EOS
+    end
   end
 
   service do
-    run [opt_bin/"sing-box", "run", "--config", etc/"sing-box/config.json",
-         "--directory", var/"lib/sing-box"]
+    if OS.mac?
+      run ["/bin/bash", opt_libexec/"sing-box-service", opt_bin/"sing-box", "run",
+           "--config", etc/"sing-box/config.json", "--directory", var/"lib/sing-box"]
+      require_root true
+      stop_timeout 60
+    else
+      run [opt_bin/"sing-box", "run", "--config", etc/"sing-box/config.json",
+           "--directory", var/"lib/sing-box"]
+    end
     keep_alive true
   end
 

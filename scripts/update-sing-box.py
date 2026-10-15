@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-
+# noqa: EXE001
 import json
 import re
 import sys
 from pathlib import Path
-
 
 FORMULA = Path("Formula/sing-box.rb")
 
