@@ -12,6 +12,13 @@ class SingBox < Formula
       url "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.12/sing-box-1.15.0-alpha.12-darwin-amd64.tar.gz"
       sha256 "368bae6d16043f1763a7e55a5108e5f449288da30b94d21780bdbe82b47693a2"
     end
+
+    resource "sing-box-service" do
+      url "https://raw.githubusercontent.com/frankittee/homebrew-tap/main/scripts/sing-box-service.sh",
+          using: :nounzip
+      version "1"
+      sha256 "1431a3ad455763423a833074fe735f6f497b44237f79aa81fecbe32572fd6d88"
+    end
   end
 
   on_linux do
@@ -24,15 +31,6 @@ class SingBox < Formula
     end
   end
 
-  on_macos do
-    resource "sing-box-service" do
-      url "https://raw.githubusercontent.com/frankittee/homebrew-tap/main/scripts/sing-box-service.sh",
-          using: :nounzip
-      version "1"
-      sha256 "1431a3ad455763423a833074fe735f6f497b44237f79aa81fecbe32572fd6d88"
-    end
-  end
-
   def install
     bin.install "sing-box"
 
@@ -41,6 +39,7 @@ class SingBox < Formula
     resource("sing-box-service").stage do
       libexec.install "sing-box-service.sh" => "sing-box-service"
     end
+    chmod 0755, libexec/"sing-box-service"
   end
 
   def caveats
@@ -55,7 +54,7 @@ class SingBox < Formula
 
   service do
     if OS.mac?
-      run ["/bin/bash", opt_libexec/"sing-box-service", opt_bin/"sing-box", "run",
+      run [opt_libexec/"sing-box-service", opt_bin/"sing-box", "run",
            "--config", etc/"sing-box/config.json", "--directory", var/"lib/sing-box"]
       require_root true
       stop_timeout 60
