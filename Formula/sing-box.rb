@@ -17,7 +17,7 @@ class SingBox < Formula
       url "https://raw.githubusercontent.com/frankittee/homebrew-tap/main/scripts/sing-box-service.sh",
           using: :nounzip
       version "1"
-      sha256 "1431a3ad455763423a833074fe735f6f497b44237f79aa81fecbe32572fd6d88"
+      sha256 "c9fb3c8113b04694002b1a33fa5b8900cefc8e9569e74b7c88b198cb3c6ba90d"
     end
   end
 
@@ -63,6 +63,8 @@ class SingBox < Formula
            "--directory", var/"lib/sing-box"]
     end
     keep_alive true
+    log_path var/"log/sing-box.log"
+    error_log_path var/"log/sing-box.err.log"
   end
 
   test do

@@ -4,7 +4,7 @@
 config_dir=$(mktemp -d) || exit 1
 trap 'rm -f "$config_dir/config.json"; rmdir "$config_dir"' EXIT
 "$1" merge "$config_dir/config.json" "${@:3}" || exit 1
-dns_addresses=$(/usr/bin/ruby -rjson -ripaddr -e '
+dns_addresses=$(/usr/bin/ruby -E UTF-8:UTF-8 -rjson -ripaddr -e '
   # sing-box merge normalizes JSON but preserves comments.
   json = STDIN.read.gsub(/"(?:\\.|[^"\\])*"|\/\/[^\n]*|\/\*.*?\*\//m) do |token|
     token.start_with?("\"") ? token : ""
