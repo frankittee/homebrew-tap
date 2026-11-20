@@ -9,7 +9,6 @@ from pathlib import Path
 FORMULA = Path("Formula/git-config-manager.rb")
 TARGETS = (
     "aarch64-apple-darwin",
-    "x86_64-apple-darwin",
     "aarch64-unknown-linux-musl",
     "x86_64-unknown-linux-musl",
 )
